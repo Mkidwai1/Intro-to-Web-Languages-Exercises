@@ -1,0 +1,26 @@
+<input type="text" id="txt-price" placeholder="Enter the price of the item"> 
+<input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+<button id="btn-submit">Calculate</button>
+<div id="output"></div>
+
+<script>
+  var priceInput = document.getElementById('txt-price');// this looks for an element by its id and the id has to be txt-price
+  var quantityInput = document.getElementById('txt-quantity');//this looks for an element by its id and the id has to be txt-quantity
+  var submitBtn = document.getElementById('btn-submit'); //this looks for an element by its id and the id has to be buttom-submit
+  var output = document.getElementById('output'); //this looks for an element by its id and the id has to be output
+
+  submitBtn.addEventListener('click', function () { // so this adds a listen which basically "listens" for something to happen and the code underneath executes.
+  // this particlar listening is listening when the submitBtn gets clicked
+    var price = priceInput.value; // takes the value eneters in the priceInput fielf
+    var quanity = quantityInput.value; // takes the value enetered in the quanityInput fiield
+    price = +price; // converts from string to a useale number
+    quanity = +quanity; // converts from string to a usable number
+    if (Number.isNaN(price) || Number.isNaN(quanity)) { // checks id either input is not a number if they arnt numbers then it ouputs invalid input
+      output.innerHTML = 'Invalid input';
+      return;
+    }
+    var totalPrice = price * quanity; // calculates total price
+    totalPrice = Math.round(totalPrice * 100) / 100; // round the number
+    output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice; //outputs the output message
+  });
+</script>
